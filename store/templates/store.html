@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block 'title' %} <title> Django Ecommerce | Store </title> {% endblock 'title' %}
+
+{% block content %}
+{% for item in product %}
+<div class="col mb-5">
+    <div class="card h-100">
+        <!-- Product image-->
+        <img class="card-img-top mb-2" src="{{ item.image.url }}" alt="..." />
+        <!-- Product details-->
+        <div class="card-body p-4" style="background-color: #83c5be;">
+            <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder">{{item.name}}</h5>
+                <h6>{{item.category}}</h6>
+                <!-- Product price-->
+                <span class="text-muted text-decoration-line-through">{{item.price}}</span> - {{item.descount |floatformat:2 }}
+            </div>
+        </div>
+        <div class="card-footer p-4 pt-0 border-top-0 " style="background-color: #83c5be;">
+            <div class="text-center">
+                <a class="btn btn-success mt-2" href="#">Add</a>
+                <a class="btn btn-primary mt-2" href="{% url 'productpage' item.id  %}">View</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+
+{% endblock content %}
