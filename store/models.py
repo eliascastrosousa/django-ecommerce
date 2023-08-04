@@ -17,11 +17,15 @@ class Category(models.Model):
 		return self.name
 	
 class Product(models.Model):
+	brand = models.CharField(max_length=200)
 	name = models.CharField(max_length=200)
+	color = models.CharField(max_length=100)
+	describe = models.CharField(max_length=400)
+	cod = models.CharField(max_length=100)
+	category = models.ForeignKey(Category, on_delete=models.CASCADE)
 	price = models.FloatField()
 	digital = models.BooleanField(default=False,null=True, blank=True)
 	image = models.ImageField(null=True, blank=True)
-	category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return self.name

@@ -11,10 +11,21 @@ def books(request):
     context = {'product':livros}
     return render(request, 'store.html', context)
 
-def eletronics(request):
-    eletronicos = Product.objects.filter(category__name="Eletrônicos")
-    context = {'product':eletronicos}
+def telefonia(request):
+    telefonia = Product.objects.filter(category__name="Telefonia")
+    context = {'product':telefonia}
     return render(request, 'store.html', context)
+
+def moveis(request):
+    moveis = Product.objects.filter(category__name="Móveis")
+    context = {'product':moveis}
+    return render(request, 'store.html', context)
+
+def eletrodomesticos(request):
+    eletrodomesticos = Product.objects.filter(category__name="Eletrodomésticos")
+    context = {'product':eletrodomesticos}
+    return render(request, 'store.html', context)
+
 
 def productpage(request, id):
     item = Product.objects.filter(id=id)

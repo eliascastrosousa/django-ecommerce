@@ -3,30 +3,39 @@
 {% block 'title' %} <title> Django Ecommerce | Product </title> {% endblock 'title' %}
 
 {% block content %}
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
 
-{% for item in item %}
-<div class="col-md-6 p-4" style="background-color: #83c5be;">
-    <img class="card-img-top mb-5 mb-md-0" src="{{ item.image.url }}" alt="..." />
-</div>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
-<div class="col-md-6 p-4" style="background-color: #83c5be;">
-    <div class="small mb-1">{{item.name}}</div>
-    <h1 class="display-5 fw-bolder">{{item.name}}</h1>
-    <div class="fs-5 mb-5">
-        <span class="text-decoration-line-through">{{item.price}}</span>
-        <span>{{item.descount |floatformat:2 }}</span>
+            {% for item in item %}
+            <div class="col-md-6 p-4" style="background-color: #edf6f9;">
+                <img class="card-img-top mb-5 mb-md-0" src="{{ item.image.url }}" alt="..." />
+            </div>
+
+            <div class="col-md-6 p-4" style="background-color: #edf6f9;">
+                <div class="small mb-1">{{item.brand}}</div>
+                <h1 class="display-5 fw-bolder">{{item.name}}</h1>
+                <div class="fs-5 mb-5">
+                    <span class="text-decoration-line-through">{{item.price}}</span>
+                    <span>{{item.descount |floatformat:2 }}</span>
+                </div>
+                <p class="lead">{{item.describe}}</p>
+                <div class="d-flex">
+                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
+                        style="max-width: 3rem" />
+                    <button class="btn btn-success flex-shrink-0" type="button">
+                        <i class="bi-cart-fill me-1"></i>
+                        Add to cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+        <h2>Itens Relacionados</h2>
+        <hr>
     </div>
-    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam
-        sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste
-        laborum vero?</p>
-    <div class="d-flex">
-        <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-        <button class="btn btn-success flex-shrink-0" type="button">
-            <i class="bi-cart-fill me-1"></i>
-            Add to cart
-        </button>
-    </div>
-</div>
-{% endfor %}
+</section>
 
 {% endblock content %}
