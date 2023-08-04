@@ -21,6 +21,14 @@
                     <option value="3">Menor Preço</option>
                   </select>
             </div>
+            <div class="col-auto">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Marcas</option>
+                    {% for item in product %}
+                    <option value="{{item.brand}}">{{item.brand}}</option>
+                    {% endfor %}
+                  </select>
+            </div>
             
         </div>
 

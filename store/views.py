@@ -26,10 +26,10 @@ def eletrodomesticos(request):
     context = {'product':eletrodomesticos}
     return render(request, 'store.html', context)
 
-
 def productpage(request, id):
     item = Product.objects.filter(id=id)
-    context = {'item':item}
+    products = Product.objects.filter(category__name=item[0].category)
+    context = {'item': item, 'products': products}
     return render(request, 'productpage.html', context)
 
 def cart(request):
